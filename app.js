@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 5000;
 
 // ── CORS ────────────────────────────────────────────────────
 // Izinkan request dari Vite dev server (localhost maupun IP LAN)
-const allowedOrigins = (process.env.CLIENT_URL || 'http://localhost:5173')
+const allowedOrigins = (process.env.CLIENT_URL || 'https://expressreact-3ph8.onrender.com')
   .split(',')
   .map(o => o.trim());
 
