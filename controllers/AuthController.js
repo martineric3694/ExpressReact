@@ -38,8 +38,8 @@ const AuthController = {
       // Simpan token di httpOnly cookie
       res.cookie('token', token, {
         httpOnly: true,
-        secure:   process.env.NODE_ENV === 'production',
-        sameSite: 'lax',
+        secure:   true,
+        sameSite: 'none',
         maxAge:   24 * 60 * 60 * 1000 // 1 hari
       });
 
@@ -87,7 +87,12 @@ const AuthController = {
   // POST /api/auth/logout
   // ----------------------------------------------------------------
   logout(req, res) {
-    res.clearCookie('token');
+    res.clearCookie('token',{
+      httpOnly: true,
+      secure: true,
+      sameSite: 'none'
+    });
+
     res.json({ message: 'Logout berhasil' });
   },
 
